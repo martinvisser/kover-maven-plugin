@@ -1,0 +1,16 @@
+<lifecycleMappingMetadata>
+    <pluginExecutions>
+        <pluginExecution>
+            <pluginExecutionFilter>
+                <goals>
+                    <goal>prepare-agent</goal>
+                    <goal>report</goal>
+                    <goal>verify</goal>
+                </goals>
+            </pluginExecutionFilter>
+            <action>
+                <ignore/>
+            </action>
+        </pluginExecution>
+    </pluginExecutions>
+</lifecycleMappingMetadata>

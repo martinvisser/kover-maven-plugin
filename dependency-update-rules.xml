@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" comparisonMethod="maven"
+         xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+    <rules/>
+    <ignoreVersions>
+        <!-- Ignore Alpha's, Beta's, release candidates and milestones -->
+        <ignoreVersion type="regex">(?i).*Alpha.*(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*Beta.*(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*Preview.*(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*preview.*(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*-B(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*RC(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*CR(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*ce(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*ccs(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*cp(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*M(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*pr(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*u(?:-?\d+)?</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*(redhat|does-not-exist|android|jboss|fixed|dev|jre\d+).*</ignoreVersion>
+        <ignoreVersion type="regex">(?i).*-(m|b).*</ignoreVersion>
+        <!-- from static-version-broker -->
+        <ignoreVersion type="regex">(?i).*(\d{8})(\.(\d+))?</ignoreVersion>
+        <!-- from user-profile-event-consumer -->
+        <ignoreVersion type="regex">(?i).*\d+\.\d+\.\d+.\d{8}</ignoreVersion>
+    </ignoreVersions>
+</ruleset>
