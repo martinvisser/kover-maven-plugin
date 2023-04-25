@@ -26,7 +26,7 @@ internal fun MavenProject.aggregationRequest(): Path =
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.htmlOutputDir(): Path =
-    Paths.get(reporting.outputDirectory, MAIN_DIR, "html")
+    Paths.get(model.reporting.outputDirectory, MAIN_DIR, "html")
         .also { Files.createDirectories(it) }
 
 internal fun MavenProject.instrumentation(): Path =
@@ -46,7 +46,7 @@ internal fun MavenProject.verifyResult(): Path =
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.xmlOutput(): Path =
-    Paths.get(reporting.outputDirectory, MAIN_DIR, "xml", "report.xml")
+    Paths.get(model.reporting.outputDirectory, MAIN_DIR, "xml", "report.xml")
         .also { Files.createDirectories(it.parent) }
 
 /**

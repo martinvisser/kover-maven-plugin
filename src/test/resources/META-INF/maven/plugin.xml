@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<plugin>
+    <name>kover-maven-plugin</name>
+    <groupId>com.github.mavi.kover</groupId>
+    <artifactId>kover-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <goalPrefix>kover</goalPrefix>
+    <isolatedRealm>false</isolatedRealm>
+    <inheritedByDefault>true</inheritedByDefault>
+    <mojos>
+        <mojo>
+            <goal>prepare-agent</goal>
+            <requiresDirectInvocation>false</requiresDirectInvocation>
+            <requiresProject>true</requiresProject>
+            <requiresReports>false</requiresReports>
+            <aggregator>false</aggregator>
+            <requiresOnline>false</requiresOnline>
+            <inheritedByDefault>true</inheritedByDefault>
+            <implementation>com.github.mavi.kover.plugin.AgentMojo</implementation>
+            <language>java</language>
+            <instantiationStrategy>per-lookup</instantiationStrategy>
+            <executionStrategy>once-per-session</executionStrategy>
+            <threadSafe>false</threadSafe>
+            <parameters>
+                <parameter>
+                    <name>skip</name>
+                    <type>java.lang.Boolean</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description>Skip Kover</description>
+                </parameter>
+                <parameter>
+                    <name>includesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesAnnotations</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+            </parameters>
+<!--            <configuration>-->
+<!--                <skip implementation="java.lang.Boolean">${kover.skip}</skip>-->
+<!--            </configuration>-->
+        </mojo>
+        <mojo>
+            <goal>report</goal>
+            <requiresDirectInvocation>false</requiresDirectInvocation>
+            <requiresProject>true</requiresProject>
+            <requiresReports>false</requiresReports>
+            <aggregator>false</aggregator>
+            <requiresOnline>false</requiresOnline>
+            <inheritedByDefault>true</inheritedByDefault>
+            <implementation>com.github.mavi.kover.plugin.ReportMojo</implementation>
+            <language>java</language>
+            <instantiationStrategy>per-lookup</instantiationStrategy>
+            <executionStrategy>once-per-session</executionStrategy>
+            <threadSafe>false</threadSafe>
+            <parameters>
+                <parameter>
+                    <name>skip</name>
+                    <type>java.lang.Boolean</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description>Skip Kover</description>
+                </parameter>
+                <parameter>
+                    <name>includesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesAnnotations</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>reportFormats</name>
+                    <type>java.util.Set&lt;com.github.mavi.kover.plugin.ReportType&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description>Generate a report in HTML and/or XML</description>
+                </parameter>
+            </parameters>
+            <configuration/>
+        </mojo>
+        <mojo>
+            <goal>verify</goal>
+            <requiresDirectInvocation>false</requiresDirectInvocation>
+            <requiresProject>true</requiresProject>
+            <requiresReports>false</requiresReports>
+            <aggregator>false</aggregator>
+            <requiresOnline>false</requiresOnline>
+            <inheritedByDefault>true</inheritedByDefault>
+            <implementation>com.github.mavi.kover.plugin.VerifyMojo</implementation>
+            <language>java</language>
+            <instantiationStrategy>per-lookup</instantiationStrategy>
+            <executionStrategy>once-per-session</executionStrategy>
+            <threadSafe>false</threadSafe>
+            <parameters>
+                <parameter>
+                    <name>skip</name>
+                    <type>java.lang.Boolean</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description>Skip Kover</description>
+                </parameter>
+                <parameter>
+                    <name>includesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesClasses</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>excludesAnnotations</name>
+                    <type>java.util.Set&lt;java.lang.String&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description/>
+                </parameter>
+                <parameter>
+                    <name>rules</name>
+                    <type>java.util.Set&lt;com.github.mavi.kover.plugin.Rule&gt;</type>
+                    <required>false</required>
+                    <editable>true</editable>
+                    <description>Set of rules to apply on the coverage</description>
+                </parameter>
+            </parameters>
+            <configuration/>
+        </mojo>
+    </mojos>
+    <dependencies/>
+</plugin>

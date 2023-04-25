@@ -16,7 +16,7 @@ abstract class AbstractKoverMojo : AbstractMojo() {
     internal lateinit var project: MavenProject
 
     @Parameter(property = "kover.skip", defaultValue = "false")
-    private val skip = false
+    internal val skip = false
 
     /**
      * Map of plugin artifacts.

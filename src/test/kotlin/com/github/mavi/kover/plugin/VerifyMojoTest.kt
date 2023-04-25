@@ -10,28 +10,24 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldNot
 import io.kotest.matchers.throwable.shouldHaveMessage
 import org.apache.maven.plugin.MojoExecutionException
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 
 class VerifyMojoTest : BaseMojoTest() {
-    private val mojo = VerifyMojo()
-        .apply {
-            project = mavenProject
-        }
+    fun `test should skip generation if no report found`() {
+        val mojo = mojo<VerifyMojo>("verify")
 
-    @Test
-    fun `should skip generation if no report found`() {
         mojo.execute()
 
-        mavenProject.report() shouldNot exist()
+        session.currentProject.report() shouldNot exist()
     }
 
-    @Test
-    fun `should fail if no rules are configured`() {
+    fun `test should fail if no rules are configured`() {
+        val mojo = mojo<VerifyMojo>("verify")
+
         javaClass.getResourceAsStream("/test.ic")?.use {
-            mavenProject.instrumentation().toFile().outputStream().use { output ->
+            session.currentProject.instrumentation().toFile().outputStream().use { output ->
                 it.transferTo(output)
             }
         }
@@ -42,8 +38,11 @@ class VerifyMojoTest : BaseMojoTest() {
     @ParameterizedTest
     @MethodSource("incorrectRules")
     fun `should fail if incorrect rule`(rule: Rule, message: String) {
+        super.setUp()
+        val mojo = mojo<VerifyMojo>("verify")
+
         javaClass.getResourceAsStream("/test.ic")?.use {
-            mavenProject.instrumentation().toFile().outputStream().use { output ->
+            session.currentProject.instrumentation().toFile().outputStream().use { output ->
                 it.transferTo(output)
             }
         }
@@ -53,10 +52,11 @@ class VerifyMojoTest : BaseMojoTest() {
         shouldThrow<MojoExecutionException> { mojo.execute() } shouldHaveMessage message
     }
 
-    @Test
-    fun `should verify rules`() {
+    fun `test should verify rules`() {
+        val mojo = mojo<VerifyMojo>("verify")
+
         javaClass.getResourceAsStream("/test.ic")?.use {
-            mavenProject.instrumentation().toFile().outputStream().use { output ->
+            session.currentProject.instrumentation().toFile().outputStream().use { output ->
                 it.transferTo(output)
             }
         }
@@ -70,13 +70,14 @@ class VerifyMojoTest : BaseMojoTest() {
         )
 
         shouldNotThrowAny { mojo.execute() }
-        mavenProject.verifyResult() should exist()
+        session.currentProject.verifyResult() should exist()
     }
 
-    @Test
-    fun `should fail on violations`() {
+    fun `test should fail on violations`() {
+        val mojo = mojo<VerifyMojo>("verify")
+
         javaClass.getResourceAsStream("/test.ic")?.use {
-            mavenProject.instrumentation().toFile().outputStream().use { output ->
+            session.currentProject.instrumentation().toFile().outputStream().use { output ->
                 it.transferTo(output)
             }
         }
@@ -91,7 +92,7 @@ class VerifyMojoTest : BaseMojoTest() {
 
         shouldThrow<MojoExecutionException> { mojo.execute() } shouldHaveMessage
             "Rule violated: branches covered count is 0, but expected minimum is 5000"
-        mavenProject.verifyResult() should exist()
+        session.currentProject.verifyResult() should exist()
     }
 
     companion object {

@@ -15,7 +15,7 @@ class ReportMojo : AbstractKoverMojo() {
      * Comma-separated list of report types. Defaults to both HTML and XML.
      */
     @Parameter(property = "kover.reportFormats", defaultValue = "HTML,XML")
-    private val reportFormats = setOf(HTML, XML)
+    internal val reportFormats = mutableSetOf(HTML, XML)
 
     override fun executeMojo() {
         if (!canExecute()) {
