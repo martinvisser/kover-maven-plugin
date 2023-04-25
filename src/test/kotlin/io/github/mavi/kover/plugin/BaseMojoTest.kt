@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import io.kotest.assertions.withClue
 import io.kotest.matchers.file.exist

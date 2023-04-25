@@ -1,4 +1,4 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import java.math.BigDecimal
 import java.nio.file.Path

@@ -2,7 +2,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.mavi.kover</groupId>
+    <groupId>io.github.mavi.kover</groupId>
     <artifactId>kover-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>

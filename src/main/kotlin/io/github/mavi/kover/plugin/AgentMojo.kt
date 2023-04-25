@@ -1,4 +1,4 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import org.apache.maven.plugins.annotations.LifecyclePhase
 import org.apache.maven.plugins.annotations.Mojo

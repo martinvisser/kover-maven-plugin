@@ -1,4 +1,4 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.intellij.rt.coverage.verify.Main

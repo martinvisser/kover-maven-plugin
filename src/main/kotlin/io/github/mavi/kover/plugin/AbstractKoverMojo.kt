@@ -1,4 +1,4 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.module.SimpleModule

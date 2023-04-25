@@ -1,4 +1,4 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.maps.shouldContainKey

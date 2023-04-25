@@ -1,8 +1,8 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
-import com.github.mavi.kover.plugin.AggregationType.COVERED_COUNT
-import com.github.mavi.kover.plugin.AggregationType.COVERED_PERCENTAGE
-import com.github.mavi.kover.plugin.MetricType.BRANCH
+import io.github.mavi.kover.plugin.AggregationType.COVERED_COUNT
+import io.github.mavi.kover.plugin.AggregationType.COVERED_PERCENTAGE
+import io.github.mavi.kover.plugin.MetricType.BRANCH
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.paths.exist

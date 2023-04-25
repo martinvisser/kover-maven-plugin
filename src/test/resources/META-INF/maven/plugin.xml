@@ -22,7 +22,7 @@ under the License.
 
 <plugin>
     <name>kover-maven-plugin</name>
-    <groupId>com.github.mavi.kover</groupId>
+    <groupId>io.github.mavi.kover</groupId>
     <artifactId>kover-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <goalPrefix>kover</goalPrefix>
@@ -37,7 +37,7 @@ under the License.
             <aggregator>false</aggregator>
             <requiresOnline>false</requiresOnline>
             <inheritedByDefault>true</inheritedByDefault>
-            <implementation>com.github.mavi.kover.plugin.AgentMojo</implementation>
+            <implementation>io.github.mavi.kover.plugin.AgentMojo</implementation>
             <language>java</language>
             <instantiationStrategy>per-lookup</instantiationStrategy>
             <executionStrategy>once-per-session</executionStrategy>
@@ -84,7 +84,7 @@ under the License.
             <aggregator>false</aggregator>
             <requiresOnline>false</requiresOnline>
             <inheritedByDefault>true</inheritedByDefault>
-            <implementation>com.github.mavi.kover.plugin.ReportMojo</implementation>
+            <implementation>io.github.mavi.kover.plugin.ReportMojo</implementation>
             <language>java</language>
             <instantiationStrategy>per-lookup</instantiationStrategy>
             <executionStrategy>once-per-session</executionStrategy>
@@ -120,7 +120,7 @@ under the License.
                 </parameter>
                 <parameter>
                     <name>reportFormats</name>
-                    <type>java.util.Set&lt;com.github.mavi.kover.plugin.ReportType&gt;</type>
+                    <type>java.util.Set&lt;io.github.mavi.kover.plugin.ReportType&gt;</type>
                     <required>false</required>
                     <editable>true</editable>
                     <description>Generate a report in HTML and/or XML</description>
@@ -136,7 +136,7 @@ under the License.
             <aggregator>false</aggregator>
             <requiresOnline>false</requiresOnline>
             <inheritedByDefault>true</inheritedByDefault>
-            <implementation>com.github.mavi.kover.plugin.VerifyMojo</implementation>
+            <implementation>io.github.mavi.kover.plugin.VerifyMojo</implementation>
             <language>java</language>
             <instantiationStrategy>per-lookup</instantiationStrategy>
             <executionStrategy>once-per-session</executionStrategy>
@@ -172,7 +172,7 @@ under the License.
                 </parameter>
                 <parameter>
                     <name>rules</name>
-                    <type>java.util.Set&lt;com.github.mavi.kover.plugin.Rule&gt;</type>
+                    <type>java.util.Set&lt;io.github.mavi.kover.plugin.Rule&gt;</type>
                     <required>false</required>
                     <editable>true</editable>
                     <description>Set of rules to apply on the coverage</description>

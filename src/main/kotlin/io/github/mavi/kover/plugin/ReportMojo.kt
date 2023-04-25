@@ -1,7 +1,7 @@
-package com.github.mavi.kover.plugin
+package io.github.mavi.kover.plugin
 
-import com.github.mavi.kover.plugin.ReportType.HTML
-import com.github.mavi.kover.plugin.ReportType.XML
+import io.github.mavi.kover.plugin.ReportType.HTML
+import io.github.mavi.kover.plugin.ReportType.XML
 import org.apache.maven.plugins.annotations.LifecyclePhase
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
