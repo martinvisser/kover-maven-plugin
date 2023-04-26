@@ -6,6 +6,10 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
+# The API requires write permission on the repository to submit dependencies
+permissions:
+  contents: write
+
 name: Java CI with Maven
 
 on:
@@ -29,3 +33,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn verify
+    - name: Maven Dependency Tree Dependency Submission
+      uses: advanced-security/maven-dependency-submission-action@v3.0.1
