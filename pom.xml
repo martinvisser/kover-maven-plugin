@@ -19,7 +19,7 @@
         <detekt.version>1.22.0</detekt.version>
         <intellij-coverage.version>1.0.716</intellij-coverage.version>
         <jackson.version>2.15.0</jackson.version>
-        <json.version>20220320</json.version>
+        <json.version>20230227</json.version>
         <junit.version>5.9.3</junit.version>
         <kotest.version>5.6.1</kotest.version>
         <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
