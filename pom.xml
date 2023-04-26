@@ -22,6 +22,7 @@
         <kotest.version>5.6.1</kotest.version>
         <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
         <maven-plugin-annotations.version>3.8.2</maven-plugin-annotations.version>
+        <maven-plugin-plugin.version>3.8.2</maven-plugin-plugin.version>
         <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
         <maven-project.version>2.2.1</maven-project.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
@@ -246,6 +247,26 @@
                         <disable>true</disable>
                     </consoleOutputReporter>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                    <execution>
+                        <id>default-descriptor</id>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

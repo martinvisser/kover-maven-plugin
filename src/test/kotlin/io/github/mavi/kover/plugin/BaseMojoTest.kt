@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package io.github.mavi.kover.plugin
 
 import io.kotest.assertions.withClue
@@ -16,6 +14,8 @@ import java.io.File
 
 abstract class BaseMojoTest : AbstractMojoTestCase() {
     internal lateinit var session: MavenSession
+
+    override fun getPluginDescriptorPath(): String = getBasedir() + "/target/classes/META-INF/maven/plugin.xml"
 
     override fun setUp() {
         val basedir = File("${javaClass.getResource("/")?.path}/projects/default")

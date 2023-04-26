@@ -37,3 +37,7 @@ This plugin is based on the [Gradle Plugin](https://github.com/Kotlin/kotlinx-ko
     </plugin>
 </plugins>
 ```
+
+### Known issues
+- During executing tests the following message might appear: `The MojoDescriptor for the goal prepare-agent cannot be null`
+  - Solved by running `mvn compile` first as it needs a `plugin.xml` in `target/classes/META-INF/maven/`.
