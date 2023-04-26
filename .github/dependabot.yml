@@ -5,10 +5,10 @@ updates:
     schedule:
       interval: "monthly"
     labels:
-      - "actions-update"
+      - "dependencies"
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "weekly"
     labels:
-      - "dependency-update"
+      - "dependencies"
