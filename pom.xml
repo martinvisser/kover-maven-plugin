@@ -17,7 +17,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <detekt.version>1.22.0</detekt.version>
-        <intellij-coverage.version>1.0.716</intellij-coverage.version>
+        <intellij-coverage.version>1.0.719</intellij-coverage.version>
         <jackson.version>2.15.0</jackson.version>
         <json.version>20230227</json.version>
         <junit.version>5.9.3</junit.version>
