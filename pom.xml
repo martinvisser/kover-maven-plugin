@@ -28,7 +28,7 @@
         <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
         <maven-project.version>2.2.1</maven-project.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <maven.version>3.9.1</maven.version>
         <mockk.version>1.13.5</mockk.version>
         <plexus-archiver.version>4.7.1</plexus-archiver.version>
