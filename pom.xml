@@ -185,6 +185,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                    </args>
                     <jvmTarget>${maven.compiler.release}</jvmTarget>
                 </configuration>
             </plugin>

@@ -1,12 +1,17 @@
 package io.github.mavi.kover.plugin
 
+import com.intellij.rt.coverage.aggregate.api.AggregatorApi
+import com.intellij.rt.coverage.aggregate.api.Request
+import com.intellij.rt.coverage.report.api.Filters
+import com.intellij.rt.coverage.report.api.ReportApi
 import io.github.mavi.kover.plugin.ReportType.HTML
 import io.github.mavi.kover.plugin.ReportType.XML
 import org.apache.maven.plugins.annotations.LifecyclePhase
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
-import java.io.FileWriter
-import java.nio.file.Path
+import java.io.File
+import java.nio.charset.Charset
+import java.util.regex.Pattern
 import kotlin.io.path.exists
 
 @Mojo(name = "report", defaultPhase = LifecyclePhase.VERIFY, threadSafe = true)
@@ -29,29 +34,47 @@ class ReportMojo : AbstractKoverMojo() {
     private fun canExecute(): Boolean = project.instrumentation().exists()
 
     private fun generateReports() {
-        aggregateRawReports()
-
-        val aggregationReportFile = project.report()
-
-        val aggregationReport = AggregationReport(
-            reports = listOf(Report(project.aggregationInstrumentation(), project.aggregationMap())),
-            modules = listOf(Module(setOf(project.build.sourceDirectory) + project.build.resources.map { it.directory }.toSet())),
-            html = if (reportFormats.contains(HTML)) project.htmlOutputDir() else null,
-            xml = if (reportFormats.contains(XML)) project.xmlOutput() else null,
+        val filters = Filters(
+            includesClasses.toList().asPatterns(),
+            excludesClasses.toList().asPatterns(),
+            excludesAnnotations.toList().asPatterns(),
         )
 
-        objectMapper.writeValue(FileWriter(aggregationReportFile.toFile()), aggregationReport)
+        aggregateRawReports(filters)
 
-        com.intellij.rt.coverage.report.Main.main(arrayOf(aggregationReportFile.toString()))
+        val reports = listOf(project.aggregationInstrumentation().toFile())
+        val outputRoots = listOf(File(project.build.outputDirectory))
+        val sourceRoots = (setOf(project.build.sourceDirectory) + project.build.resources.map { it.directory }.toSet())
+            .map(::File)
+
+        if (reportFormats.contains(XML)) {
+            ReportApi.xmlReport(
+                project.xmlOutput().toFile(),
+                reports,
+                outputRoots,
+                sourceRoots,
+                filters,
+            )
+        }
+
+        if (reportFormats.contains(HTML)) {
+            ReportApi.htmlReport(
+                project.htmlOutputDir().toFile(),
+                "Kover Report",
+                Charset.defaultCharset().name(),
+                reports,
+                outputRoots,
+                sourceRoots,
+                filters,
+            )
+        }
 
         if (reportFormats.contains(HTML)) {
             log.info("Kover: HTML report for '${project.name}' file://${project.htmlOutputDir()}/index.html")
         }
     }
 
-    private fun aggregateRawReports() {
-        val aggregationRequestFile = project.aggregationRequest()
-
+    private fun aggregateRawReports(filters: Filters) {
         val aggregationGroups = listOf(
             AggregationGroup(
                 project.aggregationInstrumentation(),
@@ -59,34 +82,12 @@ class ReportMojo : AbstractKoverMojo() {
             ),
         )
 
-        writeAggregationJson(aggregationRequestFile, aggregationGroups)
-        com.intellij.rt.coverage.aggregate.Main.main(arrayOf(aggregationRequestFile.toString()))
+        val requests = aggregationGroups.map { group ->
+            Request(filters, group.ic.toFile(), group.smap.toFile())
+        }
+
+        AggregatorApi.aggregate(requests, listOf(project.instrumentation().toFile()), listOf(File(project.build.outputDirectory)))
     }
 
-    private fun writeAggregationJson(aggregationRequestFile: Path, groups: List<AggregationGroup>) {
-        val aggregation = Aggregation(
-            reports = listOf(Report(project.instrumentation())),
-            modules = listOf(
-                Module(
-                    sources = setOf(project.build.sourceDirectory) + project.build.resources.map { it.directory }.toSet(),
-                    output = setOf(project.build.outputDirectory),
-                ),
-            ),
-            result = groups.map { group ->
-                val includes = Filter(includesClasses.map(String::wildcardsToRegex))
-                val excludes = Filter(
-                    excludesClasses.map(String::wildcardsToRegex),
-                    excludesAnnotations.map(String::wildcardsToRegex),
-                )
-
-                Result(
-                    aggregatedReportFile = group.ic,
-                    smapFile = group.smap,
-                    filters = Filters(includes, excludes),
-                )
-            },
-        )
-
-        objectMapper.writeValue(FileWriter(aggregationRequestFile.toFile()), aggregation)
-    }
+    private fun List<String>.asPatterns(): List<Pattern> = map { Pattern.compile(it.wildcardsToRegex()) }
 }

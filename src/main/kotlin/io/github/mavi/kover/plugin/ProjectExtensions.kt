@@ -21,10 +21,6 @@ internal fun MavenProject.aggregationMap(): Path =
     Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "agg-smap.smap")
         .also { Files.createDirectories(it.parent) }
 
-internal fun MavenProject.aggregationRequest(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "agg-request.json")
-        .also { Files.createDirectories(it.parent) }
-
 internal fun MavenProject.htmlOutputDir(): Path =
     Paths.get(model.reporting.outputDirectory, MAIN_DIR, "html")
         .also { Files.createDirectories(it) }
@@ -35,14 +31,6 @@ internal fun MavenProject.instrumentation(): Path =
 
 internal fun MavenProject.report(): Path =
     Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "intellijreport.json")
-        .also { Files.createDirectories(it.parent) }
-
-internal fun MavenProject.verifyRequest(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "verify-request.json")
-        .also { Files.createDirectories(it.parent) }
-
-internal fun MavenProject.verifyResult(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "verify-result.json")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.xmlOutput(): Path =
