@@ -111,7 +111,7 @@ class VerifyMojo : AbstractKoverMojo() {
         processViolations(violations)
     }
 
-    private fun groupRules(aggregationGroups: List<AggregationGroup>): List<Pair<AggregationGroup, MutableList<VerificationRule>>> =
+    private fun groupRules(aggregationGroups: List<AggregationGroup>) =
         aggregationGroups.associateBy { it }.entries.map { it.key to rules }
 
     private fun processViolations(violations: List<RuleViolation>) {

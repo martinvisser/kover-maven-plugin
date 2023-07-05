@@ -86,7 +86,11 @@ class ReportMojo : AbstractKoverMojo() {
             Request(filters, group.ic.toFile(), group.smap.toFile())
         }
 
-        AggregatorApi.aggregate(requests, listOf(project.instrumentation().toFile()), listOf(File(project.build.outputDirectory)))
+        AggregatorApi.aggregate(
+            requests,
+            listOf(project.instrumentation().toFile()),
+            listOf(File(project.build.outputDirectory)),
+        )
     }
 
     private fun List<String>.asPatterns(): List<Pattern> = map { Pattern.compile(it.wildcardsToRegex()) }
