@@ -6,7 +6,12 @@ import org.apache.maven.plugins.annotations.ResolutionScope
 import java.nio.file.Path
 import kotlin.io.path.writeLines
 
-@Mojo(name = "prepare-agent", defaultPhase = LifecyclePhase.INITIALIZE, requiresDependencyResolution = ResolutionScope.RUNTIME, threadSafe = true)
+@Mojo(
+    name = "prepare-agent",
+    defaultPhase = LifecyclePhase.INITIALIZE,
+    requiresDependencyResolution = ResolutionScope.RUNTIME,
+    threadSafe = true,
+)
 class AgentMojo : AbstractKoverMojo() {
     override fun executeMojo() {
         val projectProperties = project.properties
