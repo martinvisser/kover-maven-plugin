@@ -32,7 +32,7 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven.version>3.9.3</maven.version>
         <mockk.version>1.13.5</mockk.version>
-        <plexus-archiver.version>4.7.1</plexus-archiver.version>
+        <plexus-archiver.version>4.8.0</plexus-archiver.version>
         <slf4j.version>2.0.7</slf4j.version>
         <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
     </properties>
