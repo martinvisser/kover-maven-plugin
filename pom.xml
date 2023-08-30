@@ -19,7 +19,7 @@
     <scm>
         <connection>scm:git:git://github.com/martinvisser/kover-maven-plugin.git</connection>
         <developerConnection>scm:git:ssh://github.com:martinvisser/kover-maven-plugin.git</developerConnection>
-        <url>https://github.com/martinvisser/kover-maven-plugin/tree/master</url>
+        <url>https://github.com/martinvisser/kover-maven-plugin</url>
     </scm>
 
     <distributionManagement>
