@@ -10,13 +10,9 @@
 permissions:
   contents: write
 
-name: Java CI with Maven
+name: Release
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: workflow_dispatch
 
 jobs:
   build:
@@ -31,8 +27,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
-    - name: Build with Maven
-      run: mvn verify
-    - name: Maven Dependency Tree Dependency Submission
-      if: github.ref == 'refs/heads/main'
-      uses: advanced-security/maven-dependency-submission-action@v3.0.2
+        server-id: ossrh
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
+        gpg-private-key: ${{ secrets.GPG_KEY }}
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE
+    - name: Publish package
+      run: mvn --batch-mode deploy -P release
+      env:
+        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
