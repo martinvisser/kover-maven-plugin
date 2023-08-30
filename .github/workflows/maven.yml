@@ -42,7 +42,8 @@ jobs:
       if: github.ref == 'refs/heads/main'
       uses: advanced-security/maven-dependency-submission-action@v3.0.2
     - name: Publish package
-      run: mvn --batch-mode deploy
+      run: mvn --batch-mode deploy -P release
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
