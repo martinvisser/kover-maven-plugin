@@ -9,6 +9,12 @@
     <name>Kover Maven Plugin</name>
     <url>https://github.com/martinvisser/kover-maven-plugin</url>
 
+    <developers>
+        <developer>
+            <id>martinvisser</id>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
