@@ -8,7 +8,7 @@ This plugin is based on the [Gradle Plugin](https://github.com/Kotlin/kotlinx-ko
 
 <plugins>
     <plugin>
-        <groupId>io.github.mavi.kover</groupId>
+        <groupId>io.github.martinvisser</groupId>
         <artifactId>kover-maven-plugin</artifactId>
         <version>{version}</version>
         <executions>
