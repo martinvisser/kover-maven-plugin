@@ -34,8 +34,14 @@ jobs:
         server-password: MAVEN_PASSWORD
         gpg-private-key: ${{ secrets.GPG_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
+    # Store the version, stripping any v-prefix
+    - name: Write release version
+      run: |
+        VERSION=${GITHUB_REF_NAME#v}
+        echo Version: $VERSION
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
     - name: Publish package
-      run: mvn --batch-mode deploy -P release
+      run: mvn --batch-mode deploy -Prelease -Drevision=$VERSION
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
