@@ -41,7 +41,7 @@ jobs:
         echo Version: $VERSION
         echo "VERSION=$VERSION" >> $GITHUB_ENV
     - name: Publish package
-      run: mvn --batch-mode versions:set -DnewVersion=$VERSION versions:commit deploy -Prelease
+      run: mvn --batch-mode versions:set -DnewVersion=$VERSION -Drevision=$VERSION versions:commit deploy -Prelease
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
