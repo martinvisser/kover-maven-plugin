@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<component-set>
+    <components>
+        <component>
+            <role>org.apache.maven.lifecycle.Lifecycle</role>
+            <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+            <role-hint>kover</role-hint>
+            <configuration>
+                <id>kover</id>
+                <phases>
+                    <phase>kover-maven-plugin-not-used-phase</phase>
+                </phases>
+                <default-phases>
+                    <initialize>
+                        io.github.martinvisser:kover-maven-plugin:${project.version}:prepare-agent
+                    </initialize>
+                    <verify>
+                        io.github.martinvisser:kover-maven-plugin:${project.version}:report,
+                        io.github.martinvisser:kover-maven-plugin:${project.version}:verify
+                    </verify>
+                </default-phases>
+            </configuration>
+        </component>
+    </components>
+</component-set>
