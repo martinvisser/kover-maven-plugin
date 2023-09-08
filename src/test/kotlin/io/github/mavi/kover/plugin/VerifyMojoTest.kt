@@ -28,9 +28,9 @@ class VerifyMojoTest : BaseMojoTest() {
 
         prepareCoverageFiles()
 
-        shouldThrow<MojoExecutionException> {
-            mojo.execute()
-        } shouldHaveMessage "At least one rule needs to be defined"
+        mojo.execute()
+
+        session.currentProject.report() shouldNot exist()
     }
 
     @ParameterizedTest

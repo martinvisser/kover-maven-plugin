@@ -20,12 +20,17 @@ import kotlin.io.path.exists
 
 @Mojo(name = "verify", defaultPhase = LifecyclePhase.VERIFY, threadSafe = true)
 class VerifyMojo : AbstractKoverMojo() {
-    @Parameter(required = true)
+    @Parameter
     internal val rules = mutableListOf<VerificationRule>()
 
     override fun executeMojo() {
         if (!canExecute()) {
-            log.info("Skipping Kover execution because property no report file was found.")
+            log.info("Skipping Kover execution because no report file was found.")
+            return
+        }
+
+        if (rules.isEmpty()) {
+            log.warn("Skipping Kover verification because no rules are defined.")
             return
         }
 
@@ -36,21 +41,17 @@ class VerifyMojo : AbstractKoverMojo() {
     private fun canExecute(): Boolean = project.instrumentation().exists()
 
     private fun validateRules() {
-        if (rules.isEmpty()) {
-            throw MojoExecutionException("At least one rule needs to be defined")
-        }
-
         rules.forEach { rule ->
-            if (rule.metric == null || MetricType.values().none { rule.metric == it }) {
+            if (rule.metric == null || MetricType.entries.none { rule.metric == it }) {
                 throw MojoExecutionException(
                     "A rule needs to define a (valid) type of metric. " +
-                        "Valid options: ${MetricType.values().joinToString(", ") { it.name }}.",
+                        "Valid options: ${MetricType.entries.joinToString(", ") { it.name }}.",
                 )
             }
-            if (AggregationType.values().none { rule.aggregation == it }) {
+            if (AggregationType.entries.none { rule.aggregation == it }) {
                 throw MojoExecutionException(
                     "Invalid aggregation type '${rule.aggregation}' detected. " +
-                        "Valid options: ${AggregationType.values().joinToString(", ") { it.name }}.",
+                        "Valid options: ${AggregationType.entries.joinToString(", ") { it.name }}.",
                 )
             }
 
