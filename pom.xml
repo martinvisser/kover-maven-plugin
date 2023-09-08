@@ -49,6 +49,7 @@
         <commons-io.version>2.13.0</commons-io.version>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <detekt.version>1.23.1</detekt.version>
+        <dokka-maven-plugin.version>1.9.0</dokka-maven-plugin.version>
         <guava.version>32.1.2-jre</guava.version>
         <intellij-coverage.version>1.0.735</intellij-coverage.version>
         <jackson.version>2.15.2</jackson.version>
@@ -56,10 +57,9 @@
         <junit.version>5.10.0</junit.version>
         <kotest.version>5.7.1</kotest.version>
         <ktlint-maven-plugin.version>2.0.0</ktlint-maven-plugin.version>
+        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
         <maven-plugin-annotations.version>3.9.0</maven-plugin-annotations.version>
-        <maven-plugin-gpg.version>3.1.0</maven-plugin-gpg.version>
-        <maven-plugin-javadoc.version>3.5.0</maven-plugin-javadoc.version>
-        <maven-plugin-nexus-staging.version>1.6.13</maven-plugin-nexus-staging.version>
         <maven-plugin-plugin.version>3.9.0</maven-plugin-plugin.version>
         <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
         <maven-project.version>2.2.1</maven-project.version>
@@ -67,6 +67,7 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven.version>3.9.4</maven.version>
         <mockk.version>1.13.7</mockk.version>
+        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <plexus-archiver.version>4.8.0</plexus-archiver.version>
         <slf4j.version>2.0.9</slf4j.version>
         <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
@@ -212,6 +213,36 @@
             </resource>
         </resources>
 
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>${nexus-staging-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jetbrains.dokka</groupId>
+                    <artifactId>dokka-maven-plugin</artifactId>
+                    <version>${dokka-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -339,7 +370,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -351,22 +381,39 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>dokka</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDir>${project.basedir}/target/apidocs</outputDir>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-plugin-javadoc.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
+                                <phase>verify</phase>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <attach>true</attach>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-plugin-gpg.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -380,7 +427,6 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${maven-plugin-nexus-staging.version}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
