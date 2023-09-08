@@ -24,7 +24,7 @@ class ReportMojo : AbstractKoverMojo() {
 
     override fun executeMojo() {
         if (!canExecute()) {
-            log.info("Skipping Kover execution because property no report file was found.")
+            log.info("Skipping Kover execution because no report file was found.")
             return
         }
 
