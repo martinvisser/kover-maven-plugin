@@ -46,6 +46,7 @@
         <kotlin.version>1.9.10</kotlin.version>
         <maven.compiler.release>11</maven.compiler.release>
 
+        <commons-compress.version>1.24.0</commons-compress.version>
         <commons-io.version>2.13.0</commons-io.version>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <detekt.version>1.23.1</detekt.version>
@@ -144,6 +145,11 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>${commons-compress.version}</version>
         </dependency>
 
         <dependency>
