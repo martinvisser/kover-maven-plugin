@@ -15,7 +15,7 @@ import java.io.File
 abstract class BaseMojoTest : AbstractMojoTestCase() {
     internal lateinit var session: MavenSession
 
-    override fun getPluginDescriptorPath(): String = getBasedir() + "/target/classes/META-INF/maven/plugin.xml"
+    override fun getPluginDescriptorPath(): String = "${getBasedir()}/target/classes/META-INF/maven/plugin.xml"
 
     override fun setUp() {
         val basedir = File("${javaClass.getResource("/")?.path}/projects/default")
@@ -30,9 +30,10 @@ abstract class BaseMojoTest : AbstractMojoTestCase() {
         request.setBaseDirectory(basedir)
         val populator = container.lookup(MavenExecutionRequestPopulator::class.java)
         populator.populateDefaults(request)
-        val buildingRequest = request.projectBuildingRequest
-            .setRepositorySession(DefaultRepositorySystemSession())
-            .setResolveDependencies(true)
+        val buildingRequest =
+            request.projectBuildingRequest
+                .setRepositorySession(DefaultRepositorySystemSession())
+                .setResolveDependencies(true)
 
         val projectBuilder = lookup(ProjectBuilder::class.java)
         val project = projectBuilder.build(pom, buildingRequest).project

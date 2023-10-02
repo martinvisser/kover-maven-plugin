@@ -15,7 +15,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import java.math.BigDecimal
-import java.math.RoundingMode
+import java.math.RoundingMode.HALF_UP
 import kotlin.io.path.exists
 
 @Mojo(name = "verify", defaultPhase = LifecyclePhase.VERIFY, threadSafe = true)
@@ -83,27 +83,30 @@ class VerifyMojo : AbstractKoverMojo() {
     }
 
     private fun verifyCoverage() {
-        val aggregationGroups = listOf(
-            AggregationGroup(
-                project.aggregationInstrumentation(),
-                project.aggregationMap(),
-            ),
-        )
+        val aggregationGroups =
+            listOf(
+                AggregationGroup(
+                    project.aggregationInstrumentation(),
+                    project.aggregationMap(),
+                ),
+            )
         val rulesByFilter = groupRules(aggregationGroups)
 
-        val rulesArray = rulesByFilter.flatMapIndexed { index, pair ->
-            pair.second.mapIndexed { ruleIndex, rule ->
-                val group = pair.first
-                val bound = Bound(
-                    index,
-                    rule.counterToReporter(),
-                    rule.valueTypeToReporter(),
-                    rule.valueToReporter(rule.minValue),
-                    rule.valueToReporter(rule.maxValue),
-                )
-                com.intellij.rt.coverage.verify.api.Rule(ruleIndex, group.ic.toFile(), Target.ALL, listOf(bound))
+        val rulesArray =
+            rulesByFilter.flatMapIndexed { index, pair ->
+                pair.second.mapIndexed { ruleIndex, rule ->
+                    val group = pair.first
+                    val bound =
+                        Bound(
+                            index,
+                            rule.counterToReporter(),
+                            rule.valueTypeToReporter(),
+                            rule.valueToReporter(rule.minValue),
+                            rule.valueToReporter(rule.maxValue),
+                        )
+                    com.intellij.rt.coverage.verify.api.Rule(ruleIndex, group.ic.toFile(), Target.ALL, listOf(bound))
+                }
             }
-        }
 
         val verifier = Verifier(rulesArray)
         verifier.processRules()
@@ -116,20 +119,22 @@ class VerifyMojo : AbstractKoverMojo() {
         aggregationGroups.associateBy { it }.entries.map { it.key to rules }
 
     private fun processViolations(violations: List<RuleViolation>) {
-        val ruleViolations = runCatching {
-            violations.map { violation ->
-                val ruleIndex = violation.id
-                val boundsMap = rules.mapIndexed { index, rule -> index to rule }.associate { it }
-                val bound = boundsMap[ruleIndex]
-                    ?: throw MojoExecutionException(
-                        "Error occurred while parsing verification result: unmapped rule with index $ruleIndex",
-                    )
+        val ruleViolations =
+            runCatching {
+                violations.map { violation ->
+                    val ruleIndex = violation.id
+                    val boundsMap = rules.mapIndexed { index, rule -> index to rule }.associate { it }
+                    val bound =
+                        boundsMap[ruleIndex]
+                            ?: throw MojoExecutionException(
+                                "Error occurred while parsing verification result: unmapped rule with index $ruleIndex",
+                            )
 
-                RuleViolations(violation.violations.flatMap { boundViolations(it, bound, ruleIndex) })
-            }
-        }.onFailure {
-            throw MojoExecutionException("Error occurred while parsing verifier result", it)
-        }.getOrThrow()
+                    RuleViolations(violation.violations.flatMap { boundViolations(it, bound, ruleIndex) })
+                }
+            }.onFailure {
+                throw MojoExecutionException("Error occurred while parsing verifier result", it)
+            }.getOrThrow()
 
         if (ruleViolations.isNotEmpty()) {
             log.warn("Coverage checks have not been met, see log for details")
@@ -146,25 +151,27 @@ class VerifyMojo : AbstractKoverMojo() {
     ): List<BoundViolations> {
         val boundIndex = boundViolation.id
 
-        val minViolations = boundViolation.minViolations.map {
-            bound.minValue
-                ?: throw MojoExecutionException(
-                    "Error occurred while parsing verification error: " +
-                        "no minimal bound with ID $boundIndex and rule index $ruleIndex",
-                )
+        val minViolations =
+            boundViolation.minViolations.map {
+                bound.minValue
+                    ?: throw MojoExecutionException(
+                        "Error occurred while parsing verification error: " +
+                            "no minimal bound with ID $boundIndex and rule index $ruleIndex",
+                    )
 
-            boundViolation(it, bound, false)
-        }
+                boundViolation(it, bound, false)
+            }
 
-        val maxViolations = boundViolation.maxViolations.map {
-            bound.maxValue
-                ?: throw MojoExecutionException(
-                    "Error occurred while parsing verification error: " +
-                        "no maximal bound with index $boundIndex and rule index $ruleIndex",
-                )
+        val maxViolations =
+            boundViolation.maxViolations.map {
+                bound.maxValue
+                    ?: throw MojoExecutionException(
+                        "Error occurred while parsing verification error: " +
+                            "no maximal bound with index $boundIndex and rule index $ruleIndex",
+                    )
 
-            boundViolation(it, bound, true)
-        }
+                boundViolation(it, bound, true)
+            }
 
         return minViolations + maxViolations
     }
@@ -211,18 +218,20 @@ class VerifyMojo : AbstractKoverMojo() {
     private fun BoundViolations.format(): String {
         val directionText = if (isMax) "maximum" else "minimum"
 
-        val metricText = when (metric) {
-            MetricType.LINE -> "lines"
-            MetricType.INSTRUCTION -> "instructions"
-            MetricType.BRANCH -> "branches"
-        }
+        val metricText =
+            when (metric) {
+                MetricType.LINE -> "lines"
+                MetricType.INSTRUCTION -> "instructions"
+                MetricType.BRANCH -> "branches"
+            }
 
-        val valueTypeText = when (aggregation) {
-            AggregationType.COVERED_COUNT -> "covered count"
-            AggregationType.MISSED_COUNT -> "missed count"
-            AggregationType.COVERED_PERCENTAGE -> "covered percentage"
-            AggregationType.MISSED_PERCENTAGE -> "missed percentage"
-        }
+        val valueTypeText =
+            when (aggregation) {
+                AggregationType.COVERED_COUNT -> "covered count"
+                AggregationType.MISSED_COUNT -> "missed count"
+                AggregationType.COVERED_PERCENTAGE -> "covered percentage"
+                AggregationType.MISSED_PERCENTAGE -> "missed percentage"
+            }
 
         return "$metricText $valueTypeText is $actualValue, but expected $directionText is $expectedValue"
     }
@@ -244,34 +253,14 @@ class VerifyMojo : AbstractKoverMojo() {
 
     private fun VerificationRule.valueToReporter(value: String?): BigDecimal? =
         if (aggregation.isPercentage) {
-            value?.toBigDecimal()?.divide(ONE_HUNDRED, scale, RoundingMode.HALF_UP)
+            value?.toBigDecimal()?.divide(ONE_HUNDRED, SCALE, HALF_UP)
         } else {
             value?.toBigDecimal()
         }
 
     companion object {
         private val ONE_HUNDRED = 100.toBigDecimal()
-        private const val scale = 6
+        private const val SCALE = 6
         private val maxPercentage = BigDecimal(100)
-    }
-}
-
-private data class ViolationId(val index: Int, val entityName: String?) : Comparable<ViolationId> {
-    @Suppress("ReturnCount")
-    override fun compareTo(other: ViolationId): Int {
-        // first compared by index
-        index.compareTo(other.index).takeIf { it != 0 }?.let { return it }
-
-        // if indexes are equals then compare by entity name
-        if (entityName == null) {
-            // bounds with empty entity names goes first
-            return if (other.entityName == null) 0 else -1
-        }
-        if (other.entityName == null) return 1
-
-        entityName.compareTo(other.entityName).takeIf { it != 0 }?.let { return it }
-
-        // indexes and names are equals
-        return 0
     }
 }

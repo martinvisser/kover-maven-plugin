@@ -33,14 +33,18 @@ class AgentMojo : AbstractKoverMojo() {
         ).joinToString(" ")
     }
 
-    private fun Path.writeAgentArgs(instrumentationFile: Path, excludedClasses: Set<String>) {
-        val lines = mutableListOf(
-            instrumentationFile.toString(),
-            TRACKING_PER_TEST.toString(),
-            CALCULATE_FOR_UNLOADED_CLASSES.toString(),
-            APPEND_TO_DATA_FILE.toString(),
-            LINING_ONLY_MODE.toString(),
-        )
+    private fun Path.writeAgentArgs(
+        instrumentationFile: Path,
+        excludedClasses: Set<String>,
+    ) {
+        val lines =
+            mutableListOf(
+                instrumentationFile.toString(),
+                TRACKING_PER_TEST.toString(),
+                CALCULATE_FOR_UNLOADED_CLASSES.toString(),
+                APPEND_TO_DATA_FILE.toString(),
+                LINING_ONLY_MODE.toString(),
+            )
         if (excludedClasses.isNotEmpty()) {
             lines.add("-exclude")
             excludedClasses.forEach { e ->
