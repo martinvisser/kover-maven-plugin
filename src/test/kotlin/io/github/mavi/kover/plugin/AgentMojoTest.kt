@@ -4,6 +4,7 @@ import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.maps.shouldContainKey
 import kotlin.io.path.readLines
 
+@Suppress("ktlint:standard:function-naming")
 class AgentMojoTest : BaseMojoTest() {
     fun `test should write arg line`() {
         val mojo = mojo<AgentMojo>("prepare-agent")

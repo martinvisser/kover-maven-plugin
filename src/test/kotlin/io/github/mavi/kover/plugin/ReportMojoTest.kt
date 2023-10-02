@@ -4,6 +4,7 @@ import io.kotest.matchers.paths.exist
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldNot
 
+@Suppress("ktlint:standard:function-naming")
 class ReportMojoTest : BaseMojoTest() {
     fun `test should skip generation if no report found`() {
         val mojo = mojo<ReportMojo>("report")

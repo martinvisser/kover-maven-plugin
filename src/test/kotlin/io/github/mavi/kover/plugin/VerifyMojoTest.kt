@@ -35,7 +35,10 @@ class VerifyMojoTest : BaseMojoTest() {
 
     @ParameterizedTest
     @MethodSource("incorrectRules")
-    fun `should fail if incorrect rule`(rule: VerificationRule, message: String) {
+    fun `should fail if incorrect rule`(
+        rule: VerificationRule,
+        message: String,
+    ) {
         super.setUp()
         val mojo = mojo<VerifyMojo>("verify")
 
@@ -107,35 +110,36 @@ class VerifyMojoTest : BaseMojoTest() {
 
     companion object {
         @JvmStatic
-        fun incorrectRules(): List<Arguments> = listOf(
-            Arguments.of(
-                VerificationRule(),
-                "A rule needs to define a (valid) type of metric. Valid options: LINE, INSTRUCTION, BRANCH.",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, minValue = "abc"),
-                "'minValue' needs to be (positive) number",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, minValue = "-1"),
-                "'minValue' needs to be (positive) number",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, maxValue = "abc"),
-                "'maxValue' needs to be (positive) number",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, maxValue = "-1"),
-                "'maxValue' needs to be (positive) number",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, minValue = "101"),
-                "'minValue' cannot be above 100%",
-            ),
-            Arguments.of(
-                VerificationRule(metric = BRANCH, maxValue = "101"),
-                "'maxValue' cannot be above 100%",
-            ),
-        )
+        fun incorrectRules(): List<Arguments> =
+            listOf(
+                Arguments.of(
+                    VerificationRule(),
+                    "A rule needs to define a (valid) type of metric. Valid options: LINE, INSTRUCTION, BRANCH.",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, minValue = "abc"),
+                    "'minValue' needs to be (positive) number",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, minValue = "-1"),
+                    "'minValue' needs to be (positive) number",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, maxValue = "abc"),
+                    "'maxValue' needs to be (positive) number",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, maxValue = "-1"),
+                    "'maxValue' needs to be (positive) number",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, minValue = "101"),
+                    "'minValue' cannot be above 100%",
+                ),
+                Arguments.of(
+                    VerificationRule(metric = BRANCH, maxValue = "101"),
+                    "'maxValue' cannot be above 100%",
+                ),
+            )
     }
 }
