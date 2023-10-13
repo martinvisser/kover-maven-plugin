@@ -43,7 +43,7 @@ abstract class AbstractKoverMojo : AbstractMojo() {
             return
         }
 
-        ErrorReporter.setBasePath(project.build.directory)
+        ErrorReporter.suggestBasePath(project.build.directory)
         executeMojo()
     }
 
