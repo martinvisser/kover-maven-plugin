@@ -56,7 +56,7 @@
         <jackson.version>2.15.3</jackson.version>
         <json.version>20231013</json.version>
         <junit.version>5.10.1</junit.version>
-        <kotest.version>5.7.2</kotest.version>
+        <kotest.version>5.8.0</kotest.version>
         <ktlint-maven-plugin.version>3.0.0</ktlint-maven-plugin.version>
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.6.0</maven-javadoc-plugin.version>
