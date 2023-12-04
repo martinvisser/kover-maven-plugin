@@ -66,7 +66,7 @@
         <maven-project.version>2.2.1</maven-project.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
-        <maven.version>3.9.5</maven.version>
+        <maven.version>3.9.6</maven.version>
         <mockk.version>1.13.8</mockk.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <plexus-archiver.version>4.9.0</plexus-archiver.version>
