@@ -35,4 +35,4 @@ jobs:
       run: mvn verify
     - name: Maven Dependency Tree Dependency Submission
       if: github.ref == 'refs/heads/main'
-      uses: advanced-security/maven-dependency-submission-action@v3.0.3
+      uses: advanced-security/maven-dependency-submission-action@v4.0.0
