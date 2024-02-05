@@ -49,7 +49,7 @@
         <commons-compress.version>1.25.0</commons-compress.version>
         <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
-        <detekt.version>1.23.4</detekt.version>
+        <detekt.version>1.23.5</detekt.version>
         <dokka-maven-plugin.version>1.9.10</dokka-maven-plugin.version>
         <guava.version>33.0.0-jre</guava.version>
         <intellij-coverage.version>1.0.744</intellij-coverage.version>
