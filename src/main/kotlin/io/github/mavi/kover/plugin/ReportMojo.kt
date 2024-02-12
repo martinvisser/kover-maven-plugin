@@ -52,6 +52,7 @@ class ReportMojo : AbstractKoverMojo() {
         if (reportFormats.contains(XML)) {
             ReportApi.xmlReport(
                 project.xmlOutput().toFile(),
+                "XML Report",
                 reports,
                 outputRoots,
                 sourceRoots,
