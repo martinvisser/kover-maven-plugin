@@ -39,6 +39,9 @@ class ReportMojo : AbstractKoverMojo() {
                 includesClasses.toList().asPatterns(),
                 excludesClasses.toList().asPatterns(),
                 excludesAnnotations.toList().asPatterns(),
+                emptyList(),
+                emptyList(),
+                emptyList(),
             )
 
         aggregateRawReports(filters)
