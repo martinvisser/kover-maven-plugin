@@ -59,7 +59,7 @@
         <kotest.version>5.9.0</kotest.version>
         <ktlint-maven-plugin.version>3.2.0</ktlint-maven-plugin.version>
         <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
-        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
         <maven-plugin-annotations.version>3.13.0</maven-plugin-annotations.version>
         <maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
         <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
