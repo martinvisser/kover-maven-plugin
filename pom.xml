@@ -69,7 +69,7 @@
         <maven.version>3.9.8</maven.version>
         <mockk.version>1.13.11</mockk.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <plexus-archiver.version>4.9.2</plexus-archiver.version>
+        <plexus-archiver.version>4.10.0</plexus-archiver.version>
         <slf4j.version>2.0.13</slf4j.version>
         <snappy.version>0.5</snappy.version>
         <versions-maven-plugin.version>2.17.0</versions-maven-plugin.version>
