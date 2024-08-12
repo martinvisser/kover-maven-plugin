@@ -58,7 +58,7 @@
         <junit.version>5.10.3</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.2.0</ktlint-maven-plugin.version>
-        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.5</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
         <maven-plugin-annotations.version>3.13.1</maven-plugin-annotations.version>
         <maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
