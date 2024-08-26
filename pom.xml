@@ -46,7 +46,7 @@
         <kotlin.version>2.0.20</kotlin.version>
         <maven.compiler.release>17</maven.compiler.release>
 
-        <commons-compress.version>1.27.0</commons-compress.version>
+        <commons-compress.version>1.27.1</commons-compress.version>
         <commons-io.version>2.16.1</commons-io.version>
         <commons-lang3.version>3.16.0</commons-lang3.version>
         <detekt.version>1.23.5</detekt.version>
