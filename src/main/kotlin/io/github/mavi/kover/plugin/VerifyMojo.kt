@@ -4,6 +4,7 @@ import com.intellij.rt.coverage.verify.Verifier
 import com.intellij.rt.coverage.verify.api.Bound
 import com.intellij.rt.coverage.verify.api.BoundViolation
 import com.intellij.rt.coverage.verify.api.Counter
+import com.intellij.rt.coverage.verify.api.Rule
 import com.intellij.rt.coverage.verify.api.RuleViolation
 import com.intellij.rt.coverage.verify.api.Target
 import com.intellij.rt.coverage.verify.api.ValueType
@@ -104,7 +105,7 @@ class VerifyMojo : AbstractKoverMojo() {
                             rule.valueToReporter(rule.minValue),
                             rule.valueToReporter(rule.maxValue),
                         )
-                    com.intellij.rt.coverage.verify.api.Rule(ruleIndex, group.ic.toFile(), Target.ALL, listOf(bound))
+                    Rule(ruleIndex, group.ic.toFile(), Target.ALL, listOf(bound))
                 }
             }
 

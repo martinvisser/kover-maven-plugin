@@ -34,7 +34,9 @@ enum class MetricType {
 /**
  * Type of counter value to compare with minimal and maximal values if them defined.
  */
-enum class AggregationType(val isPercentage: Boolean) {
+enum class AggregationType(
+    val isPercentage: Boolean,
+) {
     COVERED_COUNT(false),
     MISSED_COUNT(false),
     COVERED_PERCENTAGE(true),
