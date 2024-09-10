@@ -10,31 +10,38 @@ private const val TEMP_DIR = "tmp"
 private const val MAIN_DIR = "kover"
 
 internal fun MavenProject.argsFile(): Path =
-    Paths.get(build.directory, TEMP_DIR, "kover-agent.args")
+    Paths
+        .get(build.directory, TEMP_DIR, "kover-agent.args")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.aggregationInstrumentation(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "agg-ic.ic")
+    Paths
+        .get(build.directory, TEMP_DIR, MAIN_DIR, "agg-ic.ic")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.aggregationMap(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "agg-smap.smap")
+    Paths
+        .get(build.directory, TEMP_DIR, MAIN_DIR, "agg-smap.smap")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.htmlOutputDir(): Path =
-    Paths.get(model.reporting.outputDirectory, MAIN_DIR, "html")
+    Paths
+        .get(model.reporting.outputDirectory, MAIN_DIR, "html")
         .also { Files.createDirectories(it) }
 
 internal fun MavenProject.instrumentation(): Path =
-    Paths.get(build.directory, MAIN_DIR, "test.ic")
+    Paths
+        .get(build.directory, MAIN_DIR, "test.ic")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.report(): Path =
-    Paths.get(build.directory, TEMP_DIR, MAIN_DIR, "intellijreport.json")
+    Paths
+        .get(build.directory, TEMP_DIR, MAIN_DIR, "intellijreport.json")
         .also { Files.createDirectories(it.parent) }
 
 internal fun MavenProject.xmlOutput(): Path =
-    Paths.get(model.reporting.outputDirectory, MAIN_DIR, "xml", "report.xml")
+    Paths
+        .get(model.reporting.outputDirectory, MAIN_DIR, "xml", "report.xml")
         .also { Files.createDirectories(it.parent) }
 
 /**

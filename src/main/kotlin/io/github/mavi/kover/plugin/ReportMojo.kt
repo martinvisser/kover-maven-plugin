@@ -49,8 +49,12 @@ class ReportMojo : AbstractKoverMojo() {
         val reports = listOf(project.aggregationInstrumentation().toFile())
         val outputRoots = listOf(File(project.build.outputDirectory))
         val sourceRoots =
-            (setOf(project.build.sourceDirectory) + project.build.resources.map { it.directory }.toSet())
-                .map(::File)
+            (
+                setOf(project.build.sourceDirectory) +
+                    project.build.resources
+                        .map { it.directory }
+                        .toSet()
+            ).map(::File)
 
         if (reportFormats.contains(XML)) {
             ReportApi.xmlReport(
