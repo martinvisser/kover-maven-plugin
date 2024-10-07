@@ -55,7 +55,7 @@
         <intellij-coverage.version>1.0.762</intellij-coverage.version>
         <jackson.version>2.18.0</jackson.version>
         <json.version>20240303</json.version>
-        <junit.version>5.11.1</junit.version>
+        <junit.version>5.11.2</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.3.0</ktlint-maven-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
