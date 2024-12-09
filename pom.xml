@@ -52,7 +52,7 @@
         <detekt.version>1.23.7</detekt.version>
         <dokka-maven-plugin.version>1.9.20</dokka-maven-plugin.version>
         <guava.version>33.3.1-jre</guava.version>
-        <intellij-coverage.version>1.0.764</intellij-coverage.version>
+        <intellij-coverage.version>1.0.765</intellij-coverage.version>
         <jackson.version>2.18.2</jackson.version>
         <json.version>20240303</json.version>
         <junit.version>5.11.3</junit.version>
