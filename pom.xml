@@ -50,7 +50,7 @@
         <commons-io.version>2.18.0</commons-io.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <detekt.version>1.23.7</detekt.version>
-        <dokka-maven-plugin.version>1.9.20</dokka-maven-plugin.version>
+        <dokka-maven-plugin.version>2.0.0</dokka-maven-plugin.version>
         <guava.version>33.3.1-jre</guava.version>
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.18.2</jackson.version>
