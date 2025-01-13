@@ -54,7 +54,7 @@
         <guava.version>33.4.0-jre</guava.version>
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.18.2</jackson.version>
-        <json.version>20241224</json.version>
+        <json.version>20250107</json.version>
         <junit.version>5.11.4</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.4.0</ktlint-maven-plugin.version>
