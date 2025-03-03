@@ -53,7 +53,7 @@
         <dokka-maven-plugin.version>2.0.0</dokka-maven-plugin.version>
         <guava.version>33.4.0-jre</guava.version>
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
-        <jackson.version>2.18.2</jackson.version>
+        <jackson.version>2.18.3</jackson.version>
         <json.version>20250107</json.version>
         <junit.version>5.12.0</junit.version>
         <kotest.version>5.9.1</kotest.version>
