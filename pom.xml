@@ -43,7 +43,7 @@
     <properties>
         <revision>1</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.version>2.1.20</kotlin.version>
         <maven.compiler.release>17</maven.compiler.release>
 
         <commons-compress.version>1.27.1</commons-compress.version>
@@ -51,7 +51,7 @@
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <detekt.version>1.23.8</detekt.version>
         <dokka-maven-plugin.version>2.0.0</dokka-maven-plugin.version>
-        <guava.version>33.4.0-jre</guava.version>
+        <guava.version>33.4.5-jre</guava.version>
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.18.3</jackson.version>
         <json.version>20250107</json.version>
