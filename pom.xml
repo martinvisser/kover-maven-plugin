@@ -47,7 +47,7 @@
         <maven.compiler.release>17</maven.compiler.release>
 
         <commons-compress.version>1.27.1</commons-compress.version>
-        <commons-io.version>2.18.0</commons-io.version>
+        <commons-io.version>2.19.0</commons-io.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <detekt.version>1.23.8</detekt.version>
         <dokka-maven-plugin.version>2.0.0</dokka-maven-plugin.version>
@@ -55,7 +55,7 @@
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.18.3</jackson.version>
         <json.version>20250107</json.version>
-        <junit.version>5.12.1</junit.version>
+        <junit.version>5.12.2</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.5.0</ktlint-maven-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
@@ -67,7 +67,7 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <maven.version>3.9.9</maven.version>
-        <mockk.version>1.13.17</mockk.version>
+        <mockk.version>1.14.0</mockk.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <plexus-archiver.version>4.10.0</plexus-archiver.version>
         <slf4j.version>2.0.17</slf4j.version>
