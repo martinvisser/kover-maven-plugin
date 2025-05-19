@@ -43,7 +43,7 @@
     <properties>
         <revision>1</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>2.1.20</kotlin.version>
+        <kotlin.version>2.1.21</kotlin.version>
         <maven.compiler.release>17</maven.compiler.release>
 
         <commons-compress.version>1.27.1</commons-compress.version>
@@ -54,7 +54,7 @@
         <guava.version>33.4.8-jre</guava.version>
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.19.0</jackson.version>
-        <json.version>20250107</json.version>
+        <json.version>20250517</json.version>
         <junit.version>5.12.2</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.5.0</ktlint-maven-plugin.version>
