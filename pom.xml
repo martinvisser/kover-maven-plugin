@@ -55,7 +55,7 @@
         <intellij-coverage.version>1.0.766</intellij-coverage.version>
         <jackson.version>2.19.0</jackson.version>
         <json.version>20250517</json.version>
-        <junit.version>5.13.0</junit.version>
+        <junit.version>5.13.1</junit.version>
         <kotest.version>5.9.1</kotest.version>
         <ktlint-maven-plugin.version>3.5.0</ktlint-maven-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
@@ -66,7 +66,7 @@
         <maven-project.version>2.2.1</maven-project.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <maven.version>3.9.9</maven.version>
+        <maven.version>3.9.10</maven.version>
         <mockk.version>1.14.2</mockk.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <plexus-archiver.version>4.10.0</plexus-archiver.version>
