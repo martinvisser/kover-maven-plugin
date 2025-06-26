@@ -29,7 +29,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: 'maven'
-        server-id: ossrh
+        server-id: central # Value of the distributionManagement/repository/id field of the pom.xml
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
         gpg-private-key: ${{ secrets.GPG_KEY }}
