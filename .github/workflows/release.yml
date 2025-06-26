@@ -43,6 +43,6 @@ jobs:
     - name: Publish package
       run: mvn --batch-mode versions:set -DnewVersion=$VERSION -Drevision=$VERSION versions:commit deploy -Prelease
       env:
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.MAVEN_TOKEN }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
