@@ -1,3 +1,6 @@
+> [!NOTE]  
+> This repository is obsolete now Kotlin has its own: https://github.com/Kotlin/kotlinx-kover
+
 # Kover Maven Plugin
 
 This plugin is based on the [Gradle Plugin](https://github.com/Kotlin/kotlinx-kover).
